@@ -12,6 +12,8 @@ import { Searchbar } from './Searchbar';
 import { Team } from './Team';
 import { Mon } from './Mon';
 
+import './index.css';
+
 function App() {
   const startingText = 'Enter a Pokemon\'s name!';
   const invalidText = 'Invalid search.';
@@ -57,9 +59,9 @@ function App() {
   }
 
   return (
-    <main className="App">
-      <h1>Thoughtworks Demo</h1>
-      <Searchbar 
+    <main className="container min-h-screen pl-8 pr-8 flex flex-col items-center justify-center bg-gradient-to-b from-slate-300 via-emerald-300 to-indigo-300">
+      <h1 className="text-5xl font-bold mb-4">Thoughtworks Demo</h1>
+      <Searchbar
         placeholder={"Type something, stupid."}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

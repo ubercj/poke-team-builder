@@ -17,7 +17,8 @@ export const Searchbar = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <input className="searchbar"
+      <input
+        className="border rounded p-2"
         placeholder={placeholder}
         value={searchTerm}
         onChange={handleChange}

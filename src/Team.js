@@ -14,7 +14,7 @@ export const Team = ({
     } else {
       return team.map((mon) => {
         return(
-        <div key={mon.id} onClick={() => handleClickOnMon(mon)}>
+        <div className="flex flex-col items-center cursor-pointer m-2 hover:bg-slate-50" key={mon.id} onClick={() => handleClickOnMon(mon)}>
           <h4>{mon.name}</h4>
           <img src={mon.sprite} alt={mon.name}/>
         </div>
@@ -24,9 +24,11 @@ export const Team = ({
   }
 
   return (
-    <>
+    <div className="border rounded-md p-4 mb-6">
       <h2>Your Team</h2>
-      {renderTeam()}
-    </>
+      <div className="flex justify-evenly">
+        {renderTeam()}
+      </div>
+    </div>
   );
 }
