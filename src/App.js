@@ -8,12 +8,22 @@ import { Team } from './Team';
 import { Mon } from './Mon';
 
 import './index.css';
+import { HistoryBox } from './HistoryBox';
 
 function App() {
   const queryClient = new QueryClient();
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchHistory, setSearchHistory] = useState([]);
   const [team, setTeam] = useState([]);
+
+  const addToHistory = (name) => {
+    if (!searchHistory.includes(name)) {
+      const newHistory = [...searchHistory];
+      newHistory.push(name);
+      setSearchHistory(newHistory);
+    }
+  }
 
   const addToTeam = (data) => {
     if (team.length < 6) {
@@ -32,10 +42,18 @@ function App() {
         <Searchbar
           setSearchTerm={setSearchTerm}
         />
-        <Mon searchTerm={searchTerm} addToTeam={addToTeam} />
+        <Mon
+          searchTerm={searchTerm}
+          addToTeam={addToTeam}
+          addToHistory={addToHistory}
+        />
         <Team
           team={team}
           setTeam={setTeam}
+          setSearchTerm={setSearchTerm}
+        />
+        <HistoryBox
+          searchHistory={searchHistory}
           setSearchTerm={setSearchTerm}
         />
       </main>

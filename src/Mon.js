@@ -6,6 +6,7 @@ import { captureMon, capitalize } from './utils';
 export const Mon = ({
   searchTerm,
   addToTeam,
+  addToHistory,
 }) => {
   const {
     data,
@@ -27,10 +28,11 @@ export const Mon = ({
       return "An error has occurred: " + error.message;
     } 
     else {
+      addToHistory(data.name);
       return (
         <>
           <h2 className="text-2xl font-semi">{capitalize(data.name)}</h2>
-          <img className={ isFetching ? "ease-in-out bg-green-200" : "ease-in-out bg-transparent"} src={data.sprites.front_default} alt={data.name} />
+          <img className={ isFetching ? "ease-in-out scale-125" : "ease-in-out scale-100" } src={data.sprites.front_default} alt={data.name} />
           <p>Dex #: {data.id}</p>
           <p>Type 1: {capitalize(data.types[0].type.name)}</p>
           <p>Type 2: {data.types[1] ? capitalize(data.types[1].type.name) : 'None'}</p>
