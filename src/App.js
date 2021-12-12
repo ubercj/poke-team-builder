@@ -1,10 +1,5 @@
-// import {
-//   useQuery,
-//   useMutation,
-//   useQueryClient,
-//   QueryClient,
-//   QueryClientProvider,
-// } from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { useState } from "react";
 
@@ -15,69 +10,32 @@ import { Mon } from './Mon';
 import './index.css';
 
 function App() {
-  const startingText = 'Enter a Pokemon\'s name!';
-  const invalidText = 'Invalid search.';
-  const [searchTerm, setSearchTerm] = useState('');
-  const [details, setDetails] = useState('');
+  const queryClient = new QueryClient();
+
+  const [searchTerm, setSearchTerm] = useState('pikachu');
   const [team, setTeam] = useState([]);
 
-
-  const fetchDetails = async (mon) => {
-    try {
-      const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${mon}/`);
-      const data = await result.json();
-      const newDetails = getDetails(data);
-      setDetails(newDetails);
-    } catch(error) {
-      console.log(error);
-      setDetails(invalidText);
-    }
-  }
-
-  const getDetails = (data) => {
-    let type2;
-    if(data.types[1]) {
-      type2 = data.types[1].type.name;
-    } else {
-      type2 = 'none';
-    }
-
-    return {
-      name: data.name,
-      id: data.id,
-      sprite: data.sprites.front_default,
-      type1: data.types[0].type.name,
-      type2: type2,
-      weight: data.weight,
-    }
-  }
-
-  const handleClick = () => {
+  const addToTeam = (data) => {
     const newTeam = [...team];
-    newTeam.push(details);
+    newTeam.push(data);
     setTeam(newTeam);
   }
 
   return (
-    <main className="container min-h-screen pl-8 pr-8 flex flex-col items-center justify-center bg-gradient-to-b from-slate-300 via-emerald-300 to-indigo-300">
-      <h1 className="text-5xl font-bold mb-4">Thoughtworks Demo</h1>
-      <Searchbar
-        placeholder={"Type something, stupid."}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        fetchDetails={fetchDetails}
-      />
-      <Mon 
-        details={details}
-        startingText={startingText}
-        invalidText={invalidText}
-        handleClick={handleClick}
-      />
-      <Team
-        team={team}
-        setDetails={setDetails}
-      />
-    </main>
+    <QueryClientProvider client={queryClient}>
+      <main className="container min-h-screen pl-8 pr-8 flex flex-col items-center justify-center bg-gradient-to-b from-slate-300 via-emerald-300 to-indigo-300">
+        <h1 className="text-5xl font-bold mb-4">Thoughtworks Demo</h1>
+        <Searchbar
+          setSearchTerm={setSearchTerm}
+        />
+        <Mon searchTerm={searchTerm} addToTeam={addToTeam} />
+        <Team
+          team={team}
+          setSearchTerm={setSearchTerm}
+        />
+      </main>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 

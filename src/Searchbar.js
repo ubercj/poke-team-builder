@@ -1,27 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const Searchbar = ({
-  placeholder,
-  searchTerm,
   setSearchTerm,
-  fetchDetails,
 }) => {
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  }
+  const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetchDetails(searchTerm.toLowerCase());
+    const _searchTerm = inputValue.toLowerCase();
+    setSearchTerm(_searchTerm);
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <input
         className="border rounded p-2"
-        placeholder={placeholder}
-        value={searchTerm}
-        onChange={handleChange}
+        placeholder={'Type a Pokemon\'s name and press Enter.'}
+        value={inputValue}
+        onChange={(event) => setInputValue(event.target.value)}
       />
     </form>
   );

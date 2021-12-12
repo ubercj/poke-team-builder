@@ -1,23 +1,19 @@
 import React from 'react';
+import uniqid from 'uniqid';
+
+import { Member } from './Member';
 
 export const Team = ({
   team,
-  setDetails,
+  setSearchTerm,
 }) => {
-  const handleClickOnMon = (mon) => {
-    setDetails(mon);
-  }
-
   const renderTeam = () => {
     if(team.length < 1) {
       return <p>Add a Pokemon to your team to see them show up here.</p>
     } else {
       return team.map((mon) => {
         return(
-        <div className="flex flex-col items-center cursor-pointer m-2 hover:bg-slate-50" key={mon.id} onClick={() => handleClickOnMon(mon)}>
-          <h4>{mon.name}</h4>
-          <img src={mon.sprite} alt={mon.name}/>
-        </div>
+        <Member key={uniqid()} mon={mon} setSearchTerm={setSearchTerm}/>
         );
       });
     }
