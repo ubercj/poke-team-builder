@@ -12,13 +12,14 @@ export const Searchbar = ({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="w-1/2" onSubmit={handleSubmit}>
       <input
-        className="border rounded p-2"
-        placeholder={'Type a Pokemon\'s name and press Enter.'}
+        className="w-5/6 border rounded p-2"
+        placeholder={'Type a Pokemon\'s name'}
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
       />
+      <button type="submit" className="border rounded p-2 ml-2 bg-amber-300">Search</button>
     </form>
   );
 }

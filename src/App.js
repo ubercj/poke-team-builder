@@ -12,7 +12,7 @@ import './index.css';
 function App() {
   const queryClient = new QueryClient();
 
-  const [searchTerm, setSearchTerm] = useState('pikachu');
+  const [searchTerm, setSearchTerm] = useState('');
   const [team, setTeam] = useState([]);
 
   const addToTeam = (data) => {
@@ -32,9 +32,10 @@ function App() {
         <Team
           team={team}
           setSearchTerm={setSearchTerm}
+          queryClient={queryClient}
         />
       </main>
-      <ReactQueryDevtools />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

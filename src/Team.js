@@ -1,19 +1,31 @@
 import React from 'react';
+import { useQueries } from 'react-query';
 import uniqid from 'uniqid';
 
 import { Member } from './Member';
+import { captureMon } from './utils';
 
 export const Team = ({
   team,
   setSearchTerm,
 }) => {
+  const mons = useQueries(
+    team.map(name => {
+      return {
+        queryKey: ['mon', name],
+        queryFn: () => captureMon(name),
+        refetchInterval: 10000,
+      }
+    })
+  );
+  
   const renderTeam = () => {
-    if(team.length < 1) {
-      return <p>Add a Pokemon to your team to see them show up here.</p>
+    if(mons.length < 1) {
+      return <p>Add a Pokemon to your team and they will appear here.</p>
     } else {
-      return team.map((mon) => {
-        return(
-        <Member key={uniqid()} mon={mon} setSearchTerm={setSearchTerm}/>
+      return mons.map(mon => {
+        return (
+          <Member key={uniqid()} mon={mon.data} isFetching={mon.isFetching} setSearchTerm={setSearchTerm} />
         );
       });
     }
