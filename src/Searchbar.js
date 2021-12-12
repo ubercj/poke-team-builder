@@ -19,7 +19,7 @@ export const Searchbar = ({
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
       />
-      <button type="submit" className="border rounded p-2 ml-2 bg-amber-300">Search</button>
+      <button type="submit" className="border rounded p-2 ml-2 bg-amber-300 hover:bg-amber-400">Search</button>
     </form>
   );
 }

@@ -16,9 +16,13 @@ function App() {
   const [team, setTeam] = useState([]);
 
   const addToTeam = (data) => {
-    const newTeam = [...team];
-    newTeam.push(data);
-    setTeam(newTeam);
+    if (team.length < 6) {
+      const newTeam = [...team];
+      newTeam.push(data);
+      setTeam(newTeam);
+    } else {
+      console.warn("A trainer can only carry 6 Pokemon at one time!");
+    }
   }
 
   return (

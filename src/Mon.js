@@ -1,13 +1,19 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 
-import { captureMon } from './utils';
+import { captureMon, capitalize } from './utils';
 
 export const Mon = ({
   searchTerm,
   addToTeam,
 }) => {
-  const { data, error, isLoading, isError, isFetching } = useQuery(['mon', searchTerm], () => captureMon(searchTerm), { refetchInterval: 5000 });
+  const {
+    data,
+    error,
+    isLoading,
+    isError,
+    isFetching
+  } = useQuery(['mon', searchTerm], () => captureMon(searchTerm), { refetchInterval: 5000 });
 
   const handleClick = () => {
     addToTeam(data.name);
@@ -23,11 +29,11 @@ export const Mon = ({
     else {
       return (
         <>
-          <h2 className="text-3xl font-bold underline">{data.name}</h2>
+          <h2 className="text-2xl font-semi">{capitalize(data.name)}</h2>
           <img className={ isFetching ? "ease-in-out bg-green-200" : "ease-in-out bg-transparent"} src={data.sprites.front_default} alt={data.name} />
           <p>Dex #: {data.id}</p>
-          <p>Type 1: {data.types[0].type.name}</p>
-          <p>Type 2: {data.types[1] ? data.types[1].type.name : 'None'}</p>
+          <p>Type 1: {capitalize(data.types[0].type.name)}</p>
+          <p>Type 2: {data.types[1] ? capitalize(data.types[1].type.name) : 'None'}</p>
           <p>Weight (lbs): {data.weight}</p>
           <button className="border rounded p-2 mt-2 mb-2 bg-amber-300 hover:bg-amber-400" onClick={handleClick}>
             Add to team
@@ -38,7 +44,7 @@ export const Mon = ({
   }
 
   return (
-    <div className="mt-2 min-h-[300px]">
+    <div className="mt-2 min-h-[300px] flex flex-col items-center">
       { renderMon() }
     </div>
   )
