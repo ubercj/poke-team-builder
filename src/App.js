@@ -31,8 +31,8 @@ function App() {
         <Mon searchTerm={searchTerm} addToTeam={addToTeam} />
         <Team
           team={team}
+          setTeam={setTeam}
           setSearchTerm={setSearchTerm}
-          queryClient={queryClient}
         />
       </main>
       <ReactQueryDevtools initialIsOpen={false} />

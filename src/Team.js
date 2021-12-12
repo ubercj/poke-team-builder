@@ -7,6 +7,7 @@ import { captureMon } from './utils';
 
 export const Team = ({
   team,
+  setTeam,
   setSearchTerm,
 }) => {
   const mons = useQueries(
@@ -19,13 +20,24 @@ export const Team = ({
     })
   );
   
+  const handleDelete = (target) => {
+    const newTeam = team.filter(name => name !== target);
+    setTeam(newTeam);
+  }
+
   const renderTeam = () => {
     if(mons.length < 1) {
       return <p>Add a Pokemon to your team and they will appear here.</p>
     } else {
       return mons.map(mon => {
         return (
-          <Member key={uniqid()} mon={mon.data} isFetching={mon.isFetching} setSearchTerm={setSearchTerm} />
+          <Member
+            key={uniqid()}
+            mon={mon.data}
+            isFetching={mon.isFetching}
+            setSearchTerm={setSearchTerm}
+            handleDelete={handleDelete}
+          />
         );
       });
     }
