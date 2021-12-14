@@ -44,9 +44,9 @@ export const Team = ({
   }
 
   return (
-    <div className="w-2/3 border rounded-md p-4 mb-6">
-      <h2 className="text-3xl font-bold text-center">Your Team</h2>
-      <div className="flex flex-wrap justify-evenly">
+    <div className="w-full border rounded-md p-4 mb-6">
+      <h2 className="text-xl lg:text-3xl font-bold text-center">Your Team</h2>
+      <div className="flex flex-wrap">
         {renderTeam()}
       </div>
     </div>

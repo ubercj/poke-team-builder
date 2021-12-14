@@ -12,14 +12,14 @@ export const Searchbar = ({
   }
 
   return (
-    <form className="w-1/2" onSubmit={handleSubmit}>
+    <form className="w-full lg:w-2/3 px-6 lg:mt-6 flex justify-evenly lg:justify-end" onSubmit={handleSubmit}>
       <input
-        className="w-5/6 border rounded p-2"
+        className="lg:w-1/2 border rounded p-2 lg:text-2xl"
         placeholder={'Type a Pokemon\'s name'}
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
       />
-      <button type="submit" className="border rounded p-2 ml-2 bg-amber-300 hover:bg-amber-400">Search</button>
+      <button type="submit" className="lg:w-1/6 border rounded p-2 ml-2 lg:text-2xl bg-amber-300 hover:bg-amber-400">Search</button>
     </form>
   );
 }
