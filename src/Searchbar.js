@@ -12,7 +12,7 @@ export const Searchbar = ({
   }
 
   return (
-    <form className="w-full lg:w-2/3 px-6 lg:mt-6 flex justify-evenly lg:justify-end" onSubmit={handleSubmit}>
+    <form className="w-full px-6 lg:mt-6 flex justify-evenly lg:justify-center" onSubmit={handleSubmit}>
       <input
         className="lg:w-1/2 border rounded p-2 lg:text-2xl"
         placeholder={'Type a Pokemon\'s name'}

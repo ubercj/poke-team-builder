@@ -42,7 +42,7 @@ function App() {
       <main className="w-full min-h-screen flex flex-col lg:flex-row pl-8 pr-8 bg-gradient-to-b from-slate-300 via-emerald-300 to-indigo-300">
         <div className="w-full lg:w-10/12 max-w-screen-xl mx-auto flex flex-col items-center justify-center">
           <h1 className="text-2xl text-center lg:text-5xl font-bold mt-4 mb-4">Thoughtworks Demo</h1>
-          <div className="lg:w-full lg:flex lg:justify-center lg:items-start">
+          <div className="lg:w-full lg:flex lg:flex-col lg:items-center">
             <Searchbar
               setSearchTerm={setSearchTerm}
             />
