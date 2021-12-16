@@ -1,9 +1,17 @@
 const emptyMon = {
   name: '',
-  sprites: { front_default: '' },
+  sprites: { other: { "official-artwork": { front_default: '' }}},
   id: '',
   types: [{ type: { name: '' } }],
   weight: '',
+  stats: [
+    { base_stat: '' },
+    { base_stat: '' },
+    { base_stat: '' },
+    { base_stat: '' },
+    { base_stat: '' },
+    { base_stat: '' }
+  ],
 }
 
 export const captureMon = async (name) => {
