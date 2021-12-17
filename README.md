@@ -2,7 +2,9 @@
 
 ![Team Builder with Pikachu in search](/src/sample-pic.png)
 
-A demo of [React Query](https://react-query.tanstack.com/) and [Tailwind Css](https://tailwindcss.com/) for Thoughtworks Tech Radar 2021. [See it live.](https://ubercj.github.io/poke-team-builder/)
+[See it live.](https://ubercj.github.io/poke-team-builder/)
+
+A demo of [React Query](https://react-query.tanstack.com/) and [Tailwind Css](https://tailwindcss.com/) for Thoughtworks Tech Radar 2021. A simple app that lets you search and construct a team of Pokemon, using information from [PokéAPI](https://pokeapi.co/).
 
 ## Find the presentation slides here:
 
