@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/poke-team-builder/static/css/main.0cd4b62b.css",
-    "main.js": "/poke-team-builder/static/js/main.de92ab47.js",
+    "main.js": "/poke-team-builder/static/js/main.2055a2ce.js",
     "index.html": "/poke-team-builder/index.html",
     "main.0cd4b62b.css.map": "/poke-team-builder/static/css/main.0cd4b62b.css.map",
-    "main.de92ab47.js.map": "/poke-team-builder/static/js/main.de92ab47.js.map"
+    "main.2055a2ce.js.map": "/poke-team-builder/static/js/main.2055a2ce.js.map"
   },
   "entrypoints": [
     "static/css/main.0cd4b62b.css",
-    "static/js/main.de92ab47.js"
+    "static/js/main.2055a2ce.js"
   ]
 }
