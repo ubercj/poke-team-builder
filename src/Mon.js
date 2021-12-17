@@ -32,7 +32,9 @@ export const Mon = ({
     } 
     else if (isError) {
       return error.message;
-    } 
+    } else if (data.name === '') {
+      return '';
+    }
     else {
       return (
         <>
